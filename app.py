@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 from PIL import Image
-import numpy as np
 import torch
 import torch.nn as nn
 from torchvision import models, transforms

@@ -65,7 +65,7 @@ def predict():
         class_label = class_names[class_idx]
 
     # Return the result
-    return render_template('./index.html', prediction=class_label)
+    return render_template('./index.html', prediction=class_label, scroll_to='file-input')
 
 if __name__ == '__main__':
     app.run(debug=True)

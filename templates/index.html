@@ -94,6 +94,13 @@
         image.src = URL.createObjectURL(event.target.files[0]);
       };
 
+      window.onload = () => {
+        const scrollToId = "{{ scroll_to }}";
+        if (scrollToId !== "") {
+          document.getElementById(scrollToId).scrollIntoView();
+        }
+      };
+
       images.forEach((image) => {
         image.addEventListener('click', (e) => {
           e.preventDefault();

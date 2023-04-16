@@ -28,7 +28,7 @@
             With its state-of-the-art deep learning algorithms, LungNet121 is capable of analyzing X-ray images with incredible speed and precision, delivering reliable diagnoses with an impressive 97% accuracy rate. 
           </p>
           <h5 class="mb-4">Example images:</h5>
-          <div class="row mb-4">
+          <div class="row g-1 mb-4">
               <img class="img-xray col-2" src="/static/covid1.png" title="Covid"/>
               <img class="img-xray col-2" src="/static/normal1.png" title="Normal"/>
               <img class="img-xray col-2" src="/static/covid2.png" title="Covid"/>
@@ -48,7 +48,7 @@
           <form style="margin-top:30px;" action="/predict" method="POST" enctype="multipart/form-data" onchange="loadFile(event)">
             <div class="input-group">
               <input type="file" class="form-control" accept=".jpg,.jpeg,.png" id="file-input" name="image" aria-label="Upload">
-              <button class="btn btn-success" type="submit" type="button">Submit</button>
+              <button class="btn btn-success" type="submit" id="submit-btn" type="button" disabled>Submit</button>
             </div>
           </form>
           <img class="img-fluid" id="output" style="margin-top: 50px;" class="1/3"/>	
@@ -93,6 +93,17 @@
         const image = document.getElementById('output');
         image.src = URL.createObjectURL(event.target.files[0]);
       };
+
+      const fileInput = document.getElementById('file-input');
+      const submitBtn = document.getElementById('submit-btn');
+
+      fileInput.addEventListener('change', function() {
+        if (fileInput.value) {
+          submitBtn.disabled = false;
+        } else {
+          submitBtn.disabled = true;
+        }
+      });
 
       window.onload = () => {
         const scrollToId = "{{ scroll_to }}";
